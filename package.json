@@ -12,6 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.3.6"
+    "@ai-sdk/google": "^3.0.79",
+    "@gsap/react": "^2.1.2",
+    "@tailwindcss/vite": "^4.3.0",
+    "ai": "^6.0.191",
+    "astro": "^6.3.6",
+    "gsap": "^3.15.0",
+    "tailwindcss": "^4.3.0",
+    "zod": "^4.4.3"
   }
 }

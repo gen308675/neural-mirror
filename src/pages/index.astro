@@ -1,17 +1,921 @@
 ---
-
+// src/pages/index.astro
+import "../styles/global.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Gen Mark Angus | Automation Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-[#050505] text-slate-100 min-h-screen overflow-hidden font-sans antialiased selection:bg-cyan-500/30"
+  >
+    <div class="flex h-screen w-screen overflow-hidden">
+      <aside
+        class="w-[40%] bg-[#08080c] border-r border-[#00ff00]/20 flex flex-col font-mono p-6 relative overflow-hidden shadow-[2px_0_20px_rgba(0,0,0,0.8)] z-20"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#00ff00]/[0.01] to-transparent bg-[length:100%_4px] z-50"
+        >
+        </div>
+
+        <div
+          class="flex justify-between items-center border-b border-[#00ff00]/20 pb-3 mb-6 text-[#00ff00]"
+        >
+          <span class="tracking-widest text-xs font-bold animate-pulse"
+            >● PROXY_MIRROR_CORE_v1.0a</span
+          >
+          <span class="text-[10px] text-[#00ff00]/60">SYS_STATUS: ACTIVE</span>
+        </div>
+
+        <div
+          class="flex items-start space-x-4 mb-6 bg-black/40 border border-[#00ff00]/10 p-4 rounded"
+        >
+          <div
+            class="w-20 h-20 bg-slate-900 border border-[#00ff00]/30 rounded overflow-hidden relative group shrink-0 shadow-[0_0_10px_rgba(0,255,0,0.1)]"
+          >
+            <img
+              src="/profile.jpg"
+              alt="Gen Mark Angus"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div
+              class="hidden absolute inset-0 items-center justify-center font-bold text-xs text-[#00ff00]/40 bg-slate-950"
+            >
+              GMA
+            </div>
+          </div>
+          <div>
+            <h1 class="text-[#00ff00] text-base font-bold tracking-tight">
+              GEN MARK ANGUS
+            </h1>
+            <p
+              class="text-[11px] text-[#00ff00]/70 mt-0.5 uppercase tracking-wider"
+            >
+              AI Automation & SOAR Engineer
+            </p>
+            <p class="text-[10px] text-slate-500 mt-2 leading-tight font-sans">
+              Interactions are securely proxied. Query the agent to unlock
+              system nodes or retrieve contact metrics.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-[11px] text-[#00ff00]/60 mb-6 space-y-1">
+          <div class="text-[#00ff00]/40 font-bold">
+            // STORAGE_DIRECTORY_MAPPING
+          </div>
+          <div>/root/projects/</div>
+          <div>
+            ├── <span class="text-[#00ff00] font-bold" id="node-01"
+              >01_iCare_FullStack</span
+            >
+          </div>
+          <div>
+            ├── <span class="text-[#00ff00] font-bold" id="node-02"
+              >02_BlueTeam_SOAR</span
+            >
+          </div>
+          <div>
+            └── <span class="text-[#00ff00] font-bold" id="node-03"
+              >03_NeuralMirror_Portfolio</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="flex-1 bg-black/60 border border-[#00ff00]/10 rounded p-4 overflow-y-auto space-y-4 font-mono text-xs text-[#00ff00]/80 shadow-inner custom-scrollbar"
+          id="chat-output"
+        >
+          <div class="text-[#00ff00]/40 leading-normal">
+            // CORE TERMINAL INITIATED. ALL CONVERSATIONAL PARAMETERS ARE
+            CONFINED TO OPERATOR BIOGRAPHY AND THE 3 STRUCTURAL SCHEMATICS
+            LISTED ABOVE.
+          </div>
+          <div>
+            <span class="text-[#00ff00] font-bold">System:</span> Neural Mirror initialized.
+            Request analysis on "iCare", "SOAR project", or "Agent system".
+          </div>
+        </div>
+
+        <form
+          id="chat-form"
+          class="mt-4 flex items-center border border-[#00ff00]/30 rounded bg-black/80 overflow-hidden shadow-[0_0_15px_rgba(0,255,0,0.05)]"
+        >
+          <span class="pl-3 text-[#00ff00] font-bold select-none">&gt;</span>
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Query proxy matrix path..."
+            class="w-full bg-transparent border-none text-[#00ff00] placeholder-[#00ff00]/30 px-3 py-3 text-xs focus:outline-none font-mono"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            class="bg-[#00ff00]/10 hover:bg-[#00ff00]/20 text-[#00ff00] px-4 py-3 border-l border-[#00ff00]/30 font-bold tracking-widest text-[10px] transition-colors"
+            >EXECUTE</button
+          >
+        </form>
+      </aside>
+
+      <main
+        class="w-[60%] bg-[#0B0F19] relative flex flex-col items-center justify-center p-8 z-10 overflow-hidden font-sans"
+      >
+        <div
+          class="absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[length:24px_24px]"
+        >
+        </div>
+
+        <div id="canvas-standby" class="text-center space-y-3 max-w-sm px-4">
+          <div
+            class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mx-auto shadow-xl"
+          >
+            <svg
+              class="w-5 h-5 text-slate-500 animate-pulse"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path></svg
+            >
+          </div>
+          <h3
+            class="text-xs font-mono uppercase tracking-widest text-slate-400"
+          >
+            Visualization Node Inactive
+          </h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            The representation layout is waiting for execution instructions.
+            Query the neural terminal to project dynamic architecture models.
+          </p>
+        </div>
+
+        <!-- NODE 01: ICARE CLINICAL SYSTEM (PANAON RHU) -->
+        <div
+          id="view-icare"
+          class="hidden w-full max-w-3xl opacity-0 space-y-6 font-sans text-[#0f172a]"
+        >
+          <!-- Main White App Container (Matching iCare Light Theme Layering) -->
+          <div
+            class="bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden"
+          >
+            <!-- Announcement Bar (Mirrors actual Home.jsx top notice banner) -->
+            <div
+              class="bg-[#0f172a] text-white text-xs py-2 px-4 flex items-center justify-between font-mono"
+            >
+              <div class="flex items-center space-x-2">
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-[#0ea5a8] animate-pulse"
+                ></span>
+                <span class="text-slate-300"
+                  >SYSTEM: REACT + NODE.JS ACTIVE</span
+                >
+              </div>
+              <span class="text-slate-400 text-[10px]"
+                >DB_STATUS: CONNECTED (MYSQL)</span
+              >
+            </div>
+
+            <!-- Main Header -->
+            <div
+              class="p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-[#e6fbfb]/30"
+            >
+              <div>
+                <h2 class="text-xl font-bold text-[#0f172a] tracking-tight">
+                  iCare: Panaon Rural Health Unit
+                </h2>
+                <p class="text-xs text-[#64748b] mt-0.5">
+                  Appointment & Inventory Management System
+                </p>
+              </div>
+              <div
+                class="text-xs bg-[#e6fbfb] text-[#0b8b8e] border border-[#0ea5a8]/30 px-3 py-1 rounded-full font-semibold"
+              >
+                Logged in: Admin (Nurse)
+              </div>
+            </div>
+
+            <!-- Clinical Dashboard Content Area -->
+            <div class="p-6 space-y-6">
+              <!-- Metrics Grid using Brand Colors -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div
+                  class="bg-[#f8fafc] border border-slate-200/80 p-3 rounded-lg"
+                >
+                  <div
+                    class="text-[#64748b] text-[10px] uppercase font-bold tracking-wider"
+                  >
+                    Today's Queue
+                  </div>
+                  <div class="text-xl font-extrabold text-[#0f172a] mt-0.5">
+                    32 <span class="text-xs font-medium text-[#64748b]"
+                      >Visits</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f8fafc] border border-slate-200/80 p-3 rounded-lg"
+                >
+                  <div
+                    class="text-[#64748b] text-[10px] uppercase font-bold tracking-wider"
+                  >
+                    Walk-in Triage
+                  </div>
+                  <div class="text-xl font-extrabold text-amber-600 mt-0.5">
+                    5 <span class="text-xs font-medium text-[#64748b]"
+                      >Pending</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f8fafc] border border-slate-200/80 p-3 rounded-lg"
+                >
+                  <div
+                    class="text-[#64748b] text-[10px] uppercase font-bold tracking-wider"
+                  >
+                    Vaccine Stock
+                  </div>
+                  <div class="text-xl font-extrabold text-[#0ea5a8] mt-0.5">
+                    94% <span class="text-xs font-medium text-[#64748b]"
+                      >Optimal</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f8fafc] border border-slate-200/80 p-3 rounded-lg"
+                >
+                  <div
+                    class="text-[#64748b] text-[10px] uppercase font-bold tracking-wider"
+                  >
+                    SMS Broker
+                  </div>
+                  <div class="text-xl font-extrabold text-[#0ea5a8] mt-0.5">
+                    ONLINE
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Layout Split -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                <!-- Left Data Column: Active Patient Queue Queue (2/3 width) -->
+                <div
+                  class="lg:col-span-2 border border-slate-200 rounded-xl p-4 space-y-3 bg-white"
+                >
+                  <div
+                    class="flex items-center justify-between border-b border-slate-100 pb-2 mb-1"
+                  >
+                    <span class="text-xs font-bold text-[#0f172a]"
+                      >// ACTIVE_PATIENT_QUEUE</span
+                    >
+                    <span class="text-[10px] text-[#64748b] font-mono"
+                      >Real-time MySQL Stream</span
+                    >
+                  </div>
+
+                  <!-- Patient 1: Scheduled/SMS Confirmed -->
+                  <div
+                    class="flex items-center justify-between p-3 rounded-lg bg-[#f8fafc] border border-slate-100 hover:border-[#0ea5a8]/40 transition-colors"
+                  >
+                    <div>
+                      <div class="text-sm font-bold text-[#0f172a]">
+                        Elena Santos
+                      </div>
+                      <div class="text-[11px] text-[#64748b] mt-0.5">
+                        Type: Scheduled Appointment • <span
+                          class="text-[#0b8b8e] font-semibold"
+                          >SMS Notified</span
+                        >
+                      </div>
+                    </div>
+                    <button
+                      class="text-xs bg-[#0ea5a8] hover:bg-[#0b8b8e] text-white px-3 py-1.5 rounded font-medium transition shadow-sm"
+                    >
+                      Open ITR
+                    </button>
+                  </div>
+
+                  <!-- Patient 2: Walk-In -->
+                  <div
+                    class="flex items-center justify-between p-3 rounded-lg bg-[#f8fafc] border border-slate-100 hover:border-[#0ea5a8]/40 transition-colors"
+                  >
+                    <div>
+                      <div class="text-sm font-bold text-[#0f172a]">
+                        Juan Dela Cruz
+                      </div>
+                      <div class="text-[11px] text-[#64748b] mt-0.5">
+                        Type: Walk-in Consultation • <span
+                          class="text-amber-600 font-semibold"
+                          >Awaiting Initial Vitals</span
+                        >
+                      </div>
+                    </div>
+                    <button
+                      class="text-xs bg-[#f8fafc] hover:bg-slate-100 text-[#0f172a] border border-slate-300 px-3 py-1.5 rounded font-medium transition shadow-sm"
+                    >
+                      Triage
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Right Data Column: Real-time Vaccine & Medicine Inventory (1/3 width) -->
+                <div
+                  class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col justify-between space-y-4"
+                >
+                  <div>
+                    <div
+                      class="text-xs font-bold text-[#0ea5a8] border-b border-slate-100 pb-2"
+                    >
+                      // INVENTORY_MONITOR
+                    </div>
+
+                    <div class="space-y-4 mt-3">
+                      <!-- Item 1 -->
+                      <div>
+                        <div class="flex justify-between text-xs mb-1">
+                          <span class="text-[#0f172a] font-medium"
+                            >Amoxicillin (500mg)</span
+                          >
+                          <span class="font-mono text-[#64748b] text-[11px]"
+                            >240 pcs</span
+                          >
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-1.5">
+                          <div
+                            class="bg-[#0ea5a8] h-1.5 rounded-full"
+                            style="width: 75%"
+                          >
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Item 2 -->
+                      <div>
+                        <div class="flex justify-between text-xs mb-1">
+                          <span class="text-[#0f172a] font-medium"
+                            >BCG Vaccine (Vials)</span
+                          >
+                          <span
+                            class="font-mono text-amber-600 text-[11px] font-bold"
+                            >12 left</span
+                          >
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-1.5">
+                          <div
+                            class="bg-amber-500 h-1.5 rounded-full"
+                            style="width: 20%"
+                          >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Micro-Telemetry Node Line -->
+                  <div
+                    class="text-[9px] font-mono text-[#64748b] border-t border-slate-100 pt-2 tracking-tight"
+                  >
+                    Engine: Express API ──▶ DB: icare_db
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="view-blue-team"
+          class="hidden w-full max-w-3xl opacity-0 space-y-6 font-sans text-slate-300"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-2"
+          >
+            <div>
+              <div class="flex items-center space-x-2">
+                <span
+                  class="text-[10px] font-mono text-red-500 bg-red-950/40 px-2 py-0.5 rounded border border-red-900/30 font-bold"
+                  >NODE_02</span
+                >
+                <h2 class="text-lg font-bold text-white tracking-tight">
+                  MGKK ICT Operational SOAR Pipeline
+                </h2>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Blue Team Security Orchestration, Automation, and Response
+                Platform
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-2 text-xs text-emerald-400 bg-emerald-950/30 border border-emerald-800/30 px-3 py-1 rounded font-mono self-start sm:self-center"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"
+              ></span>
+              <span>ORCHESTRATION: ENFORCED (DOCKER)</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div
+              class="bg-slate-900/30 border border-slate-800/80 p-3 rounded-lg"
+            >
+              <div
+                class="text-slate-500 text-[10px] uppercase font-mono tracking-wider"
+              >
+                SIEM Collector
+              </div>
+              <div class="text-base font-bold text-white mt-0.5 font-mono">
+                Wazuh Active
+              </div>
+            </div>
+            <div
+              class="bg-slate-900/30 border border-slate-800/80 p-3 rounded-lg"
+            >
+              <div
+                class="text-slate-500 text-[10px] uppercase font-mono tracking-wider"
+              >
+                JSON Parser
+              </div>
+              <div class="text-base font-bold text-amber-500 mt-0.5 font-mono">
+                jq Core Engine
+              </div>
+            </div>
+            <div
+              class="bg-slate-900/30 border border-slate-800/80 p-3 rounded-lg"
+            >
+              <div
+                class="text-slate-500 text-[10px] uppercase font-mono tracking-wider"
+              >
+                Threat Enrichment
+              </div>
+              <div class="text-base font-bold text-blue-400 mt-0.5 font-mono">
+                Cortex API
+              </div>
+            </div>
+            <div
+              class="bg-slate-900/30 border border-slate-800/80 p-3 rounded-lg"
+            >
+              <div
+                class="text-slate-500 text-[10px] uppercase font-mono tracking-wider"
+              >
+                Incident Database
+              </div>
+              <div class="text-base font-bold text-purple-400 mt-0.5 font-mono">
+                TheHive v5
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div
+              class="lg:col-span-2 bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.01] to-transparent pointer-events-none"
+              >
+              </div>
+
+              <div
+                class="flex items-center justify-between border-b border-slate-900 pb-2 mb-1"
+              >
+                <span class="text-xs font-mono text-slate-400"
+                  >// SHUFFLE_AUTOMATION_PLAYBOOK</span
+                >
+                <span
+                  class="text-[10px] text-emerald-500 bg-emerald-950/40 px-2 py-0.5 rounded font-mono"
+                  >EVENT_DRIVEN</span
+                >
+              </div>
+
+              <div
+                class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/40 border border-slate-800/60 relative"
+              >
+                <div
+                  class="text-xs font-mono bg-slate-800 text-slate-300 w-6 h-6 rounded flex items-center justify-center font-bold"
+                >
+                  01
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs font-bold text-slate-200 font-mono">
+                    WAZUH_ALERT_INGESTION
+                  </div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">
+                    Captures runtime alerts via webhook nodes. Parsing complex
+                    JSON structures cleanly via decoupled multi-path arrays.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="text-center text-slate-700 font-mono leading-none my-1 text-xs"
+              >
+                ▼
+              </div>
+
+              <div
+                class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/40 border border-slate-800/60 relative"
+              >
+                <div
+                  class="text-xs font-mono bg-slate-800 text-amber-500 w-6 h-6 rounded flex items-center justify-center font-bold"
+                >
+                  02
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs font-bold text-slate-200 font-mono">
+                    JQ_PAYLOAD_TRANSFORMATION
+                  </div>
+                  <div
+                    class="text-[10px] font-mono text-amber-500/90 bg-amber-950/20 px-2 py-1 rounded border border-amber-900/30 my-1 overflow-x-auto whitespace-nowrap"
+                  >
+                    jq '.rule.level > 7 and .agent.name == $exec.agent.name'
+                  </div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">
+                    Filters nested event telemetry out of network frame alerts,
+                    removing log overhead before processing API thresholds.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="text-center text-slate-700 font-mono leading-none my-1 text-xs"
+              >
+                ▼
+              </div>
+
+              <div
+                class="flex items-start gap-3 p-3 rounded-lg bg-slate-900/40 border border-slate-800/60 relative"
+              >
+                <div
+                  class="text-xs font-mono bg-slate-800 text-blue-400 w-6 h-6 rounded flex items-center justify-center font-bold"
+                >
+                  03
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs font-bold text-slate-200 font-mono">
+                    CORTEX_IOC_EVALUATION ──▶ THEHIVE
+                  </div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">
+                    Dispatches active IoC queries over public indicators. If
+                    confirmation keys match, a tracking case is auto-provisioned
+                    inside TheHive.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="border border-slate-800 rounded-xl p-4 bg-slate-950 flex flex-col justify-between space-y-4"
+            >
+              <div>
+                <div
+                  class="text-xs font-mono text-red-400 border-b border-slate-900 pb-2"
+                >
+                  // LIVE_TSHARK_METRICS
+                </div>
+
+                <div class="space-y-3.5 mt-3 font-mono text-[10px]">
+                  <div
+                    class="bg-slate-900/20 border border-slate-900 p-2 rounded"
+                  >
+                    <div class="text-slate-400 font-bold">
+                      IFACE: <span class="text-slate-200">eth0 (PROMISC)</span>
+                    </div>
+                    <div class="text-[9px] text-slate-500 mt-0.5">
+                      Capturing raw frames via tshark loop
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <div
+                      class="text-[9px] uppercase font-bold tracking-widest text-slate-500 mb-1.5"
+                    >
+                      // THEHIVE_REGISTRY
+                    </div>
+                    <div class="space-y-2">
+                      <div
+                        class="flex items-center justify-between p-1.5 rounded bg-red-950/20 border border-red-900/30 text-red-400"
+                      >
+                        <span>CASE-4812 [BruteForce]</span>
+                        <span
+                          class="text-[8px] bg-red-900/40 px-1 rounded font-bold"
+                          >CRIT</span
+                        >
+                      </div>
+                      <div
+                        class="flex items-center justify-between p-1.5 rounded bg-purple-950/20 border border-purple-900/30 text-purple-400"
+                      >
+                        <span>CASE-4799 [ScanDetect]</span>
+                        <span class="text-[8px] bg-purple-900/40 px-1 rounded"
+                          >OPEN</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="text-[9px] font-mono text-slate-600 border-t border-slate-900 pt-2 tracking-tight leading-tight"
+              >
+                Docker Stack Node:<br />
+                <span class="text-emerald-500"
+                  >docker-compose.yml // network_mode: host</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="view-agent-flow"
+          class="hidden w-full max-w-3xl opacity-0 space-y-6"
+        >
+          <div
+            class="flex items-center space-x-2 border-b border-slate-800/80 pb-3"
+          >
+            <span
+              class="text-xs font-mono text-emerald-400 bg-emerald-950/50 px-2.5 py-1 rounded border border-emerald-800/30 font-bold"
+              >NODE_03</span
+            >
+            <h2 class="text-xl font-bold text-white tracking-tight">
+              Structured Intent Orchestration Matrix
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+            <div
+              class="bg-slate-900/60 border border-slate-800 p-4 rounded-xl shadow-xl"
+            >
+              <div class="text-emerald-400 mb-2 font-bold">
+                [STREAM_PARSING]
+              </div>
+              <p class="text-slate-400 font-sans leading-relaxed">
+                Intercepts asynchronous streaming tokens from Gemini, instantly
+                binding layout transitions in real-time.
+              </p>
+            </div>
+            <div
+              class="bg-slate-900/60 border border-slate-800 p-4 rounded-xl shadow-xl"
+            >
+              <div class="text-cyan-400 mb-2 font-bold">[ZOD_GUARDRAILS]</div>
+              <p class="text-slate-400 font-sans leading-relaxed">
+                Enforces conversation restrictions ensuring the mirror agent
+                remains fully aligned with portfolio context boundaries.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-slate-950 border border-slate-800/80 p-5 rounded-xl text-[10px] font-mono text-emerald-400 overflow-x-auto whitespace-pre"
+          >
+            <span class="text-slate-500"
+              >// ACTIVE STREAM SEQUENCE DISPATCHER SCHEMA</span
+            >
+            & #123; "systemProxy": "Gen Mark Angus Neural Engine", "dataIngestion":
+            "ReadableStream", "intentInterception": ["ICARE", "BLUE-TEAM", "AGENT-FLOW"],
+            "domRendering": "Synchronized" & #125;
+          </div>
+        </div>
+
+        <div
+          id="view-contact"
+          class="hidden w-full max-w-md opacity-0 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl shadow-2xl backdrop-blur relative space-y-4"
+        >
+          <span
+            class="text-[10px] font-mono text-cyan-400 tracking-widest block uppercase"
+            >// INBOUND_COMMUNICATION_CHANNELS</span
+          >
+          <h2 class="text-lg font-bold text-white tracking-tight">
+            Establish Pipeline Connectivity
+          </h2>
+          <p class="text-xs text-slate-400 font-sans leading-relaxed mb-4">
+            Secure keys validated. Use the connection channels below to route
+            communications or project inquiries directly to Gen Mark.
+          </p>
+          <div class="space-y-2 font-mono text-xs">
+            <a
+              href="mailto:gen308675@gmail.com"
+              class="flex justify-between items-center p-3 border border-slate-800 rounded-xl bg-slate-950/60 hover:border-cyan-500/40 hover:bg-slate-900 transition-all text-slate-300 group"
+            >
+              <span>✉ EMAIL_LINK</span>
+              <span class="text-cyan-400 group-hover:underline"
+                >gen308675@gmail.com ↗</span
+              >
+            </a>
+            <a
+              href="https://linkedin.com/in/gen-mark-angus-333119b0/"
+              target="_blank"
+              class="flex justify-between items-center p-3 border border-slate-800 rounded-xl bg-slate-950/60 hover:border-cyan-500/40 hover:bg-slate-900 transition-all text-slate-300 group"
+            >
+              <span>👔 LINKEDIN_MATRIX</span>
+              <span class="text-cyan-400 group-hover:underline"
+                >Gen Mark Angus ↗</span
+              >
+            </a>
+            <a
+              href="https://github.com/gen308675"
+              target="_blank"
+              class="flex justify-between items-center p-3 border border-slate-800 rounded-xl bg-slate-950/60 hover:border-cyan-500/40 hover:bg-slate-900 transition-all text-slate-300 group"
+            >
+              <span>🐙 GITHUB_REPOSITORY</span>
+              <span class="text-cyan-400 group-hover:underline"
+                >github.com/gen308675 ↗</span
+              >
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      import { gsap } from "gsap";
+
+      const form = document.getElementById("chat-form") as HTMLFormElement;
+      const input = document.getElementById("chat-input") as HTMLInputElement;
+      const output = document.getElementById("chat-output") as HTMLDivElement;
+
+      // UI Component Registry for Presentation Canvas Transitions
+      const standbyScreen = document.getElementById("canvas-standby");
+      const viewICare = document.getElementById("view-icare");
+      const viewBlueTeam = document.getElementById("view-blue-team");
+      const viewAgentFlow = document.getElementById("view-agent-flow");
+      const viewContact = document.getElementById("view-contact");
+
+      // Tree Node Indicators for left side terminal feedback
+      const node1 = document.getElementById("node-01");
+      const node2 = document.getElementById("node-02");
+      const node3 = document.getElementById("node-03");
+
+      let activeView: HTMLElement | null = null;
+      let conversationHistory: {
+        role: "user" | "assistant";
+        content: string;
+      }[] = [];
+
+      // Unified Dynamic Canvas State Engine
+      function switchCanvasView(
+        targetView: HTMLElement | null,
+        activeNode: HTMLElement | null = null,
+      ) {
+        // Reset tree node color highlighting
+        [node1, node2, node3].forEach((n) =>
+          n?.classList.remove(
+            "text-cyan-400",
+            "text-red-400",
+            "text-emerald-400",
+          ),
+        );
+
+        // Highlight target node using specific identity colors if mapped
+        if (activeNode) {
+          if (activeNode === node1) activeNode.classList.add("text-cyan-400");
+          if (activeNode === node2) activeNode.classList.add("text-cyan-400");
+          if (activeNode === node3)
+            activeNode.classList.add("text-cyan-400");
+        }
+
+        if (activeView === targetView) return;
+
+        const viewsToFadeOut = activeView ? [activeView] : [standbyScreen];
+
+        gsap.to(viewsToFadeOut, {
+          opacity: 0,
+          duration: 0.25,
+          onComplete: () => {
+            viewsToFadeOut.forEach((v) => {
+              if (v) v.style.display = "none";
+            });
+
+            const nextView = targetView ? targetView : standbyScreen;
+            if (nextView) {
+              // FIX: Set a standard browser-readable display value ("block" or "flex")
+              nextView.style.display = "block";
+              gsap.to(nextView, { opacity: 1, duration: 0.35 });
+            }
+            activeView = targetView;
+          },
+        });
+      }
+
+      form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const query = input.value.trim();
+        if (!query) return;
+
+        // Append user text token array inside console output box
+        output.innerHTML += `<div class="mt-2 text-[#00ff00]/40 font-bold">&gt; ${query}</div>`;
+        conversationHistory.push({ role: "user", content: query });
+        input.value = "";
+
+        // 1. SNAP ONCE HERE: Make immediate layout room for user feedback
+        output.scrollTop = output.scrollHeight;
+
+        // Create the response container element
+        const responseBubble = document.createElement("div");
+        responseBubble.className =
+          "mt-1 leading-relaxed transition-all duration-300";
+        output.appendChild(responseBubble);
+
+        // 2. INJECT BULLET LOADER: Show a pulsing medical teal indicator inside the response container
+        responseBubble.innerHTML = `
+          <div id="stream-loader" class="flex items-center gap-2 text-[#0ea5a8] font-mono text-xs my-2 animate-pulse">
+            <span class="w-2 h-2 bg-[#0ea5a8] rounded-full animate-ping"></span>
+            <span>...</span>
+          </div>
+        `;
+
+        // 3. SMART ANCHOR SNAP: Smoothly align the top of the response bubble into view
+        responseBubble.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        try {
+          const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: conversationHistory }),
+          });
+
+          if (!response.body) return;
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder();
+          let assistantResponse = "";
+          let hasSnappedOnceOnContent = false;
+
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+
+            const textChunk = decoder.decode(value);
+            assistantResponse += textChunk;
+
+            // Continuous Real-Time Interception of Contextual Steering Trigger Tags
+            if (assistantResponse.includes("[TRIGGER:ICARE]")) {
+              switchCanvasView(viewICare, node1);
+            } else if (assistantResponse.includes("[TRIGGER:BLUE-TEAM]")) {
+              switchCanvasView(viewBlueTeam, node2);
+            } else if (assistantResponse.includes("[TRIGGER:AGENT-FLOW]")) {
+              switchCanvasView(viewAgentFlow, node3);
+            } else if (assistantResponse.includes("[TRIGGER:CONTACT]")) {
+              switchCanvasView(viewContact);
+            } else if (assistantResponse.includes("[TRIGGER:RESET]")) {
+              switchCanvasView(null);
+            }
+
+            // Strip structural execution tags out so they stay invisible to the browser visitor
+            let visibleText = assistantResponse
+              .replace("[TRIGGER:ICARE]", "")
+              .replace("[TRIGGER:BLUE-TEAM]", "")
+              .replace("[TRIGGER:AGENT-FLOW]", "")
+              .replace("[TRIGGER:CONTACT]", "")
+              .replace("[TRIGGER:RESET]", "");
+
+            // 4. OVERWRITE LOADER: The moment actual text tokens land, the innerText clears out the bullet loader
+            responseBubble.innerText =
+              visibleText || "Synchronizing telemetry matrices...";
+
+            // 5. FIRST PARAGRAPH LOCK: Snaps one precise frame onto the first few characters
+            // of real content to keep the text visible, then locks so it won't scroll automatically anymore.
+            if (!hasSnappedOnceOnContent && visibleText.length > 5) {
+              responseBubble.scrollIntoView({
+                behavior: "auto",
+                block: "start",
+              });
+              hasSnappedOnceOnContent = true;
+            }
+          }
+
+          conversationHistory.push({
+            role: "assistant",
+            content: assistantResponse,
+          });
+        } catch (err) {
+          responseBubble.innerHTML = `<span class="text-red-500 font-bold">[PIPELINE_FAULT] Failed to compile server stream data.</span>`;
+        }
+      });
+    </script>
+
+    <style is:global>
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(0, 255, 0, 0.15);
+        border-radius: 2px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 255, 0, 0.3);
+      }
+    </style>
+  </body>
 </html>
