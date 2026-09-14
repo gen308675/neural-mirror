@@ -1,1 +1,19 @@
 @import "tailwindcss";
+.markdown-content p {
+  margin-bottom: 0.5rem;
+}
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+.markdown-content ul, .markdown-content ol {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  list-style-type: disc;
+}
+.markdown-content li {
+  margin-bottom: 0.25rem;
+}
+.markdown-content strong {
+  color: #38bdf8;
+  font-weight: 600;
+}
