@@ -1203,94 +1203,99 @@ import "../styles/global.css";
     "[TRIGGER:P3]": { title: "Workflow 03 Walkthrough", id: "mw14B0SoXgM" },
   };
 
-  async function handleSendMessage(query: string) {
-    if (!query) return;
+async function handleSendMessage(query: string) {
+  if (!query) return;
 
-    if (idleHero) idleHero.remove();
+  if (idleHero) idleHero.remove();
 
-    output.innerHTML += `
-    <div class="flex justify-end mb-3">
-      <div class="bg-teal-600/20 border border-teal-500/30 text-teal-200 text-xs p-3 rounded-2xl max-w-xl">
-        ${query}
-      </div>
+  output.innerHTML += `
+  <div class="flex justify-end mb-3">
+    <div class="bg-teal-600/20 border border-teal-500/30 text-teal-200 text-xs p-3 rounded-2xl max-w-xl">
+      ${query}
     </div>
-  `;
+  </div>
+`;
 
-    conversationHistory.push({ role: "user", content: query });
-    if (input) input.value = "";
-    output.scrollTop = output.scrollHeight;
+  conversationHistory.push({ role: "user", content: query });
+  if (input) input.value = "";
+  output.scrollTop = output.scrollHeight;
 
-    const responseBubble = document.createElement("div");
-    responseBubble.className = "flex justify-start mb-3";
-    responseBubble.innerHTML = `
-    <div class="bg-slate-900 border border-slate-800 text-slate-300 text-xs p-3.5 rounded-2xl max-w-xl animate-pulse">
-      Neural Mirror thinking...
-    </div>
-  `;
-    output.appendChild(responseBubble);
-    output.scrollTop = output.scrollHeight;
+  const responseBubble = document.createElement("div");
+  responseBubble.className = "flex justify-start mb-3";
+  responseBubble.innerHTML = `
+  <div class="bg-slate-900 border border-slate-800 text-slate-300 text-xs p-3.5 rounded-2xl max-w-xl animate-pulse">
+    Neural Mirror thinking...
+  </div>
+`;
+  output.appendChild(responseBubble);
+  output.scrollTop = output.scrollHeight;
 
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: conversationHistory }),
-      });
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: conversationHistory }),
+    });
 
-      if (!response.ok) {
-        conversationHistory.pop();
-        responseBubble.innerHTML = `<div class="text-xs text-red-400 p-3">Server response error (${response.status}).</div>`;
-        return;
+    if (!response.ok) {
+      conversationHistory.pop();
+      responseBubble.innerHTML = `<div class="text-xs text-red-400 p-3">Server response error (${response.status}).</div>`;
+      return;
+    }
+
+    const data = await response.json();
+
+    // Extract message content safely across n8n response shapes
+    let assistantResponse = "";
+    if (Array.isArray(data) && data[0]?.output) {
+      assistantResponse = data[0].output;
+    } else if (data.output) {
+      assistantResponse = data.output;
+    } else if (data.response) {
+      assistantResponse = data.response;
+    } else if (typeof data === "string") {
+      assistantResponse = data;
+    }
+
+    if (!assistantResponse) {
+      responseBubble.innerHTML = `<div class="text-xs text-red-400 p-3">Received empty response from agent.</div>`;
+      return;
+    }
+
+    let processedText = assistantResponse;
+
+    // Process YouTube video trigger embeds
+    for (const [trigger, video] of Object.entries(VIDEO_EMBEDS)) {
+      const regex = new RegExp(
+        trigger.replace(/\[/g, "\\[").replace(/\]/g, "\\]"),
+        "gi"
+      );
+
+      if (regex.test(processedText)) {
+        const iframeHtml = `\n\n<div class="my-3 rounded-xl overflow-hidden border border-slate-700/60 aspect-video w-full bg-black shadow-lg"><iframe class="w-full h-full" src="https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\n\n`;
+        processedText = processedText.replace(regex, iframeHtml);
       }
+    }
 
-      const reader = response.body?.getReader();
-      const decoder = new TextDecoder("utf-8");
-      let assistantResponse = "";
+    const formattedHtml = await marked.parse(processedText);
 
-      if (reader) {
-        while (true) {
-          const { value, done } = await reader.read();
-          if (done) break;
-
-          // Accumulate stream chunks ONLY for this response
-          assistantResponse += decoder.decode(value, { stream: true });
-
-          let processedText = assistantResponse;
-
-          // Process triggers strictly for the active response
-          for (const [trigger, video] of Object.entries(VIDEO_EMBEDS)) {
-            // Escape brackets for exact regex matching
-            const regex = new RegExp(
-              trigger.replace(/\[/g, "\\[").replace(/\]/g, "\\]"),
-              "gi",
-            );
-
-            if (regex.test(processedText)) {
-              const iframeHtml = `\n\n<div class="my-3 rounded-xl overflow-hidden border border-slate-700/60 aspect-video w-full bg-black shadow-lg"><iframe class="w-full h-full" src="https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\n\n`;
-              processedText = processedText.replace(regex, iframeHtml);
-            }
-          }
-
-          const formattedHtml = await marked.parse(processedText);
-
-          // Update ONLY the active response bubble element
-          responseBubble.innerHTML = `
+    responseBubble.innerHTML = `
       <div class="bg-slate-900 border border-slate-800 text-slate-300 text-xs p-3.5 rounded-2xl w-full max-w-xl leading-relaxed markdown-content">
         ${formattedHtml}
       </div>
     `;
-          output.scrollTop = output.scrollHeight;
-        }
-      }
+    output.scrollTop = output.scrollHeight;
 
-      conversationHistory.push({
-        role: "assistant",
-        content: assistantResponse,
-      });
-    } catch (err) {
-      responseBubble.innerHTML = `<div class="text-xs text-red-400 p-3">Connection failed.</div>`;
-    }
+    // Save final complete message to conversation history
+    conversationHistory.push({
+      role: "assistant",
+      content: assistantResponse,
+    });
+  } catch (err) {
+    console.error("Chat Error:", err);
+    responseBubble.innerHTML = `<div class="text-xs text-red-400 p-3">Connection failed.</div>`;
   }
+}
 
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
