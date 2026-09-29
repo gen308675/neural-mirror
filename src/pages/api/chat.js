@@ -7,7 +7,7 @@ export async function POST({ request }) {
       messages.slice().reverse().find((m) => m.role === 'user')?.content || 'Hello';
     const sessionId = body.sessionId || 'default-session';
 
-    const N8N_WEBHOOK_URL = 'https://api.genmarkangus.dev/webhook/neural-mirror';
+    const N8N_WEBHOOK_URL = 'https://api.genmarkangus.dev/webhook/e4fda136-8b05-4eb5-9e20-747434b8524e/chat';
 
     // Call n8n production webhook
     const controller = new AbortController();
