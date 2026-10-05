@@ -1447,6 +1447,9 @@ async function handleSendMessage(query: string) {
         "https://api.genmarkangus.dev/webhook/voice-transcriber",
         {
           method: "POST",
+          headers: {
+            "X-API-Secret": "PQNkBUql2f6CLj3pebBkusbQyP9HmTZY"
+          },
           body: formData,
         },
       );
@@ -1521,7 +1524,10 @@ async function handleSendMessage(query: string) {
         "https://api.genmarkangus.dev/webhook/voice-dispatch",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-Secret": "PQNkBUql2f6CLj3pebBkusbQyP9HmTZY"
+          },
           body: JSON.stringify(finalPayload),
         },
       );
